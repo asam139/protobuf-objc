@@ -709,7 +709,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = ../ProtocolBuffers/private;
 				PUBLIC_HEADERS_FOLDER_PATH = ../ProtocolBuffers;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SYMROOT = Build/Products;
 			};
 			name = Debug;
@@ -726,7 +726,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = ../ProtocolBuffers/private;
 				PUBLIC_HEADERS_FOLDER_PATH = ../ProtocolBuffers;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SYMROOT = Build/Products;
 			};
 			name = Release;
