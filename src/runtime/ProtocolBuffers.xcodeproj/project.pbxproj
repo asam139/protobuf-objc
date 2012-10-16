@@ -675,6 +675,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ProtocolBuffers;
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 				VALID_ARCHS = "i386 x86_64";
 				"VALID_ARCHS[sdk=iphoneos*]" = "armv6 armv7";
 			};
@@ -695,6 +696,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ProtocolBuffers;
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 				VALID_ARCHS = "i386 x86_64";
 				"VALID_ARCHS[sdk=iphoneos*]" = "armv6 armv7";
 			};
@@ -762,6 +764,7 @@
 				);
 				PRODUCT_NAME = UnitTests;
 				SDKROOT = "";
+				SKIP_INSTALL = YES;
 				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -791,6 +794,7 @@
 				);
 				PRODUCT_NAME = UnitTests;
 				SDKROOT = "";
+				SKIP_INSTALL = YES;
 				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
