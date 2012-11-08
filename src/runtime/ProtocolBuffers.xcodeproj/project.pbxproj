@@ -713,6 +713,7 @@
 				PRIVATE_HEADERS_FOLDER_PATH = ../ProtocolBuffers/private;
 				PUBLIC_HEADERS_FOLDER_PATH = ../ProtocolBuffers;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SYMROOT = Build/Products;
 			};
 			name = Debug;
@@ -731,6 +732,7 @@
 				PRIVATE_HEADERS_FOLDER_PATH = ../ProtocolBuffers/private;
 				PUBLIC_HEADERS_FOLDER_PATH = ../ProtocolBuffers;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SYMROOT = Build/Products;
 			};
 			name = Release;
