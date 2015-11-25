@@ -537,7 +537,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0700;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0710;
 			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "ProtocolBuffers" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -700,6 +700,7 @@
 		1DEB922308733DC00010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -757,6 +758,7 @@
 					SenTestingKit,
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.booyah.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = UnitTests;
 				SDKROOT = "";
 				VALID_ARCHS = "i386 x86_64";
@@ -785,6 +787,7 @@
 					SenTestingKit,
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.booyah.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = UnitTests;
 				SDKROOT = "";
 				VALID_ARCHS = "i386 x86_64";
