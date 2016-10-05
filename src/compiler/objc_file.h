@@ -24,37 +24,37 @@
 #include <google/protobuf/stubs/common.h>
 
 namespace google {
-namespace protobuf {
-  class FileDescriptor;        // descriptor.h
-  namespace io {
-    class Printer;             // printer.h
-  }
-}
-
-namespace protobuf {
-namespace compiler {
-namespace objectivec {
-
-class FileGenerator {
- public:
-  explicit FileGenerator(const FileDescriptor* file);
-  ~FileGenerator();
-
-  void GenerateSource(io::Printer* printer);
-  void GenerateHeader(io::Printer* printer);
-  void DetermineDependencies(set<string>* dependencies);
-
-  const string& classname()    { return classname_;    }
-
- private:
-  const FileDescriptor* file_;
-  string classname_;
-
-  GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(FileGenerator);
-};
-}  // namespace objectivec
-}  // namespace compiler
-}  // namespace protobuf
+    namespace protobuf {
+        class FileDescriptor;        // descriptor.h
+        namespace io {
+            class Printer;             // printer.h
+        }
+    }
+    
+    namespace protobuf {
+        namespace compiler {
+            namespace objectivec {
+                
+                class FileGenerator {
+                public:
+                    explicit FileGenerator(const FileDescriptor* file);
+                    ~FileGenerator();
+                    
+                    void GenerateSource(io::Printer* printer);
+                    void GenerateHeader(io::Printer* printer);
+                    void DetermineDependencies(set<string>* dependencies);
+                    
+                    const string& classname()    { return classname_;    }
+                    
+                private:
+                    const FileDescriptor* file_;
+                    string classname_;
+                    
+                    GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(FileGenerator);
+                };
+            }  // namespace objectivec
+        }  // namespace compiler
+    }  // namespace protobuf
 }  // namespace google
 
 #endif // OBJC_FILE_H__

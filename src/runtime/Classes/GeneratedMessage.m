@@ -20,7 +20,7 @@
 #import "UnknownFieldSet.h"
 
 @interface PBGeneratedMessage ()
-@property (retain) PBUnknownFieldSet* unknownFields;
+@property (strong) PBUnknownFieldSet* unknownFields;
 @end
 
 
@@ -28,13 +28,7 @@
 
 @synthesize unknownFields;
 
-- (void) dealloc {
-  self.unknownFields = nil;
-  [super dealloc];
-}
-
-
-- (id) init {
+- (instancetype) init {
   if ((self = [super init])) {
     self.unknownFields = [PBUnknownFieldSet defaultInstance];
     memoizedSerializedSize = -1;

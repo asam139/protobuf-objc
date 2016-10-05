@@ -20,20 +20,16 @@
 #import "ExtensionField.h"
 
 @interface PBMutableExtensionRegistry()
-@property (retain) NSMutableDictionary* mutableClassMap;
+@property (strong) NSMutableDictionary* mutableClassMap;
 @end
 
 @implementation PBMutableExtensionRegistry
 
 @synthesize mutableClassMap;
 
-- (void) dealloc {
-  self.mutableClassMap = nil;
-  [super dealloc];
-}
 
 
-- (id) initWithClassMap:(NSMutableDictionary*) mutableClassMap_ {
+- (instancetype) initWithClassMap:(NSMutableDictionary*) mutableClassMap_ {
   if ((self = [super initWithClassMap:mutableClassMap_])) {
     self.mutableClassMap = mutableClassMap_;
   }
@@ -43,7 +39,7 @@
 
 
 + (PBMutableExtensionRegistry*) registry {
-  return [[[PBMutableExtensionRegistry alloc] initWithClassMap:[NSMutableDictionary dictionary]] autorelease];
+    return [[PBMutableExtensionRegistry alloc] initWithClassMap:[NSMutableDictionary dictionary]];
 }
 
 

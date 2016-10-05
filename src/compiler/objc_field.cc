@@ -27,62 +27,62 @@
 
 namespace google { namespace protobuf { namespace compiler { namespace objectivec {
 
-  FieldGenerator::~FieldGenerator() {
-  }
+    FieldGenerator::~FieldGenerator() {
+    }
 
 
-  FieldGeneratorMap::FieldGeneratorMap(const Descriptor* descriptor)
+    FieldGeneratorMap::FieldGeneratorMap(const Descriptor* descriptor, const FileDescriptor* file)
     : descriptor_(descriptor),
     field_generators_(new scoped_ptr<FieldGenerator>[descriptor->field_count()]),
     extension_generators_(new scoped_ptr<FieldGenerator>[descriptor->extension_count()]) {
 
-      // Construct all the FieldGenerators.
-      for (int i = 0; i < descriptor->field_count(); i++) {
-        field_generators_[i].reset(MakeGenerator(descriptor->field(i)));
-      }
-      for (int i = 0; i < descriptor->extension_count(); i++) {
-        extension_generators_[i].reset(MakeGenerator(descriptor->extension(i)));
-      }
-  }
-
-
-  FieldGenerator* FieldGeneratorMap::MakeGenerator(const FieldDescriptor* field) {
-    if (field->is_repeated()) {
-      switch (GetObjectiveCType(field)) {
-      case OBJECTIVECTYPE_MESSAGE:
-        return new RepeatedMessageFieldGenerator(field);
-      case OBJECTIVECTYPE_ENUM:
-        return new RepeatedEnumFieldGenerator(field);
-      default:
-        return new RepeatedPrimitiveFieldGenerator(field);
-      }
-    } else {
-      switch (GetObjectiveCType(field)) {
-      case OBJECTIVECTYPE_MESSAGE:
-        return new MessageFieldGenerator(field);
-      case OBJECTIVECTYPE_ENUM:
-        return new EnumFieldGenerator(field);
-      default:
-        return new PrimitiveFieldGenerator(field);
-      }
+        // Construct all the FieldGenerators.
+        for (int i = 0; i < descriptor->field_count(); i++) {
+            field_generators_[i].reset(MakeGenerator(descriptor->field(i), file));
+        }
+        for (int i = 0; i < descriptor->extension_count(); i++) {
+            extension_generators_[i].reset(MakeGenerator(descriptor->extension(i), file));
+        }
     }
-  }
 
 
-  FieldGeneratorMap::~FieldGeneratorMap() {
-  }
+    FieldGenerator* FieldGeneratorMap::MakeGenerator(const FieldDescriptor* field, const FileDescriptor* file) {
+        if (field->is_repeated()) {
+            switch (GetObjectiveCType(field)) {
+                case OBJECTIVECTYPE_MESSAGE:
+                    return new RepeatedMessageFieldGenerator(field, file);
+                case OBJECTIVECTYPE_ENUM:
+                    return new RepeatedEnumFieldGenerator(field, file);
+                default:
+                    return new RepeatedPrimitiveFieldGenerator(field, file);
+            }
+        } else {
+            switch (GetObjectiveCType(field)) {
+                case OBJECTIVECTYPE_MESSAGE:
+                    return new MessageFieldGenerator(field, file);
+                case OBJECTIVECTYPE_ENUM:
+                    return new EnumFieldGenerator(field, file);
+                default:
+                    return new PrimitiveFieldGenerator(field, file);
+            }
+        }
+    }
 
 
-  const FieldGenerator& FieldGeneratorMap::get(
-    const FieldDescriptor* field) const {
-      GOOGLE_CHECK_EQ(field->containing_type(), descriptor_);
-      return *field_generators_[field->index()];
-  }
+    FieldGeneratorMap::~FieldGeneratorMap() {
+    }
 
 
-  const FieldGenerator& FieldGeneratorMap::get_extension(int index) const {
-    return *extension_generators_[index];
-  }
+    const FieldGenerator& FieldGeneratorMap::get(
+                                                 const FieldDescriptor* field) const {
+        GOOGLE_CHECK_EQ(field->containing_type(), descriptor_);
+        return *field_generators_[field->index()];
+    }
+
+
+    const FieldGenerator& FieldGeneratorMap::get_extension(int index) const {
+        return *extension_generators_[index];
+    }
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf

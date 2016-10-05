@@ -2,20 +2,20 @@
 
 @interface RingBuffer : NSObject {
 	NSMutableData *buffer;
-	NSInteger position;
-	NSInteger tail;
+	SInt32 position;
+	SInt32 tail;
 }
-@property (nonatomic, readonly) NSUInteger freeSpace;
+@property (nonatomic, readonly) UInt32 freeSpace;
 
-- (id)initWithData:(NSMutableData*)data;
+- (instancetype)initWithData:(NSMutableData*)data;
 
 // Returns false if there is not enough free space in buffer
 - (BOOL)appendByte:(uint8_t)byte;
 
 // Returns number of bytes written
-- (NSInteger)appendData:(const NSData*)value offset:(NSInteger)offset length:(NSInteger)length;
+- (SInt32)appendData:(const NSData*)value offset:(SInt32)offset length:(SInt32)length;
 
 // Returns number of bytes written
-- (NSInteger)flushToOutputStream:(NSOutputStream*)stream;
+- (SInt32)flushToOutputStream:(NSOutputStream*)stream;
 
 @end
